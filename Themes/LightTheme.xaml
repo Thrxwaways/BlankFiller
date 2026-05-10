@@ -1,0 +1,87 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Core -->
+    <SolidColorBrush x:Key="AppBackground" Color="#EEEEF5"/>
+    <SolidColorBrush x:Key="AppForeground" Color="#1A1A2E"/>
+
+    <!-- Panel -->
+    <SolidColorBrush x:Key="PanelBackground" Color="#F8F8FF"/>
+    <SolidColorBrush x:Key="PanelBorder" Color="#C8C8D8"/>
+
+    <!-- Input -->
+    <SolidColorBrush x:Key="InputBackground" Color="#E8E8F0"/>
+    <SolidColorBrush x:Key="InputForeground" Color="#1A1A2E"/>
+    <SolidColorBrush x:Key="InputBorder" Color="#B8B8CC"/>
+    <SolidColorBrush x:Key="ReadOnlyBackground" Color="#DEDEE8"/>
+    <SolidColorBrush x:Key="ReadOnlyForeground" Color="#3A3A8A"/>
+
+    <!-- Accent -->
+    <SolidColorBrush x:Key="AccentColor" Color="#00796B"/>
+    <SolidColorBrush x:Key="AccentHover" Color="#009688"/>
+    <SolidColorBrush x:Key="AccentPurple" Color="#5E35B1"/>
+
+    <!-- Text -->
+    <SolidColorBrush x:Key="TextPrimary" Color="#1A1A2E"/>
+    <SolidColorBrush x:Key="TextSecondary" Color="#555570"/>
+    <SolidColorBrush x:Key="TextTertiary" Color="#8888A0"/>
+    <SolidColorBrush x:Key="PlaceholderColor" Color="#9999B0"/>
+
+    <!-- Button -->
+    <SolidColorBrush x:Key="ButtonBackground" Color="#E0E0EC"/>
+    <SolidColorBrush x:Key="ButtonBorder" Color="#B0B0C8"/>
+    <SolidColorBrush x:Key="ButtonHover" Color="#D0D0E0"/>
+    <SolidColorBrush x:Key="ButtonPressed" Color="#C0C0D4"/>
+
+    <!-- Status -->
+    <SolidColorBrush x:Key="SuccessColor" Color="#2E7D32"/>
+    <SolidColorBrush x:Key="ErrorColor" Color="#C62828"/>
+    <SolidColorBrush x:Key="WarningColor" Color="#E65100"/>
+    <SolidColorBrush x:Key="ErrorBorder" Color="#C62828"/>
+    <SolidColorBrush x:Key="WarningBorder" Color="#E65100"/>
+
+    <!-- Warning Button -->
+    <SolidColorBrush x:Key="WarningButtonBackground" Color="#FFF3E0"/>
+    <SolidColorBrush x:Key="WarningButtonHover" Color="#FFE0B2"/>
+
+    <!-- Overlay -->
+    <SolidColorBrush x:Key="OverlayBackground" Color="#80000000"/>
+    <SolidColorBrush x:Key="DialogBackground" Color="#F8F8FF"/>
+    <SolidColorBrush x:Key="DialogBorder" Color="#00796B"/>
+
+    <!-- Sidebar -->
+    <SolidColorBrush x:Key="SidebarBackground" Color="#E6E6F0"/>
+    <SolidColorBrush x:Key="SidebarBorder" Color="#C8C8D8"/>
+    <SolidColorBrush x:Key="SidebarText" Color="#444466"/>
+    <SolidColorBrush x:Key="SidebarSubText" Color="#666688"/>
+
+    <!-- Header -->
+    <SolidColorBrush x:Key="HeaderBackground" Color="#F8F8FF"/>
+    <SolidColorBrush x:Key="HeaderBorder" Color="#D8D8E8"/>
+
+    <!-- Status Bar -->
+    <SolidColorBrush x:Key="StatusBarBackground" Color="#E6E6F0"/>
+    <SolidColorBrush x:Key="StatusBarBorder" Color="#C8C8D8"/>
+    <SolidColorBrush x:Key="StatusBarText" Color="#8888A0"/>
+
+    <!-- News -->
+    <SolidColorBrush x:Key="NewsAccent" Color="#5E35B1"/>
+
+    <!-- Green Button -->
+    <SolidColorBrush x:Key="GreenButtonBackground" Color="#E8F5E9"/>
+    <SolidColorBrush x:Key="GreenButtonBorder" Color="#2E7D32"/>
+    <SolidColorBrush x:Key="GreenButtonHover" Color="#C8E6C9"/>
+    <SolidColorBrush x:Key="GreenButtonForeground" Color="#2E7D32"/>
+
+    <!-- Registry -->
+    <SolidColorBrush x:Key="RegistryBorder" Color="#C62828"/>
+    <SolidColorBrush x:Key="RegistryAccent" Color="#C62828"/>
+
+    <!-- Delete Button -->
+    <SolidColorBrush x:Key="DeleteButtonBackground" Color="#FFEBEE"/>
+    <SolidColorBrush x:Key="DeleteButtonBorder" Color="#C62828"/>
+    <SolidColorBrush x:Key="DeleteButtonHover" Color="#FFCDD2"/>
+
+    <!-- Dev -->
+    <SolidColorBrush x:Key="DevColor" Color="#C62828"/>
+</ResourceDictionary>
