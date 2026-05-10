@@ -1,0 +1,271 @@
+<UserControl x:Class="BlankFiller.Views.Pages.InvoicePage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="Transparent">
+
+    <UserControl.Resources>
+        <Style x:Key="SectionHeader" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="{DynamicResource AccentColor}"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,14,0,8"/>
+        </Style>
+        <Style x:Key="LabelText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextSecondary}"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Width" Value="160"/>
+        </Style>
+        <Style x:Key="InputBox" TargetType="TextBox">
+            <Setter Property="Background" Value="{DynamicResource InputBackground}"/>
+            <Setter Property="Foreground" Value="{DynamicResource InputForeground}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource InputBorder}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Padding" Value="10,8"/>
+            <Setter Property="CaretBrush" Value="{DynamicResource InputForeground}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="6" x:Name="border">
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="4,2"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource AccentColor}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ReadOnlyBox" TargetType="TextBox" BasedOn="{StaticResource InputBox}">
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="Background" Value="{DynamicResource ReadOnlyBackground}"/>
+            <Setter Property="Foreground" Value="{DynamicResource ReadOnlyForeground}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource AccentColor}"/>
+        </Style>
+        <Style x:Key="ClearButton" TargetType="Button">
+            <Setter Property="Background" Value="{DynamicResource DeleteButtonBackground}"/>
+            <Setter Property="Foreground" Value="{DynamicResource ErrorColor}"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Padding" Value="20,10"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource ErrorBorder}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1" CornerRadius="8"
+                                Padding="{TemplateBinding Padding}" x:Name="border">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="{DynamicResource DeleteButtonHover}"/>
+                                <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource ErrorColor}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="{DynamicResource DeleteButtonHover}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <Grid Margin="120,30,120,30">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0"
+                           Text="Счёт на оплату за содержание в специзоляторе"
+                           FontSize="20" FontWeight="Bold"
+                           Foreground="{DynamicResource TextPrimary}"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,16"/>
+
+                <StackPanel Grid.Row="1">
+                    <TextBlock Text="Информация для проверки" Style="{StaticResource SectionHeader}"/>
+
+                    <Grid Margin="0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="160"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Инспектор:" Style="{StaticResource LabelText}"/>
+                        <TextBox x:Name="InspectorBox" Grid.Column="1" Style="{StaticResource ReadOnlyBox}"/>
+                    </Grid>
+
+                    <Grid Margin="0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="160"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Ф.И.О.:" Style="{StaticResource LabelText}"/>
+                        <TextBox x:Name="DetaineeNameBox" Grid.Column="1" Style="{StaticResource InputBox}"/>
+                    </Grid>
+
+                    <Grid Margin="0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="160"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Дата рождения:" Style="{StaticResource LabelText}"/>
+                        <TextBox x:Name="BirthDateBox" Grid.Column="1" Style="{StaticResource InputBox}" Margin="0,0,10,0"/>
+                        <TextBlock Text="Место рождения:" Grid.Column="2" Style="{StaticResource LabelText}" Width="125"/>
+                        <TextBox x:Name="BirthPlaceBox" Grid.Column="3" Style="{StaticResource InputBox}"/>
+                    </Grid>
+
+                    <Grid Margin="0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="160"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Место жительства:" Style="{StaticResource LabelText}"/>
+                        <TextBox x:Name="ResidenceBox" Grid.Column="1" Style="{StaticResource InputBox}"/>
+                    </Grid>
+
+                    <Grid Margin="0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="160"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Место работы:" Style="{StaticResource LabelText}"/>
+                        <TextBox x:Name="WorkPlaceBox" Grid.Column="1" Style="{StaticResource InputBox}" Margin="0,0,10,0"/>
+                        <TextBlock Text="Должность:" Grid.Column="2" Style="{StaticResource LabelText}" Width="80"/>
+                        <TextBox x:Name="PositionBox" Grid.Column="3" Style="{StaticResource InputBox}"/>
+                    </Grid>
+
+                    <Grid Margin="0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="160"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Время помещения:" Style="{StaticResource LabelText}"/>
+                        <TextBox x:Name="PlacementTimeBox" Grid.Column="1" Style="{StaticResource InputBox}" Margin="0,0,10,0"/>
+                        <TextBlock Text="Номер акта:" Grid.Column="2" Style="{StaticResource LabelText}" Width="90"/>
+                        <TextBox x:Name="ActNumberBox" Grid.Column="3" Style="{StaticResource InputBox}" Margin="0,0,10,0"/>
+                        <TextBlock Text="Дата выписки:" Grid.Column="4" Style="{StaticResource LabelText}" Width="105"/>
+                        <TextBox x:Name="ReleaseDateBox" Grid.Column="5" Style="{StaticResource InputBox}"/>
+                    </Grid>
+                </StackPanel>
+
+                <Button Grid.Row="2" Content="Очистить поля"
+                        Style="{StaticResource ClearButton}"
+                        HorizontalAlignment="Center"
+                        Margin="0,20,0,10"
+                        Click="ClearButton_Click"/>
+
+                <Button Grid.Row="3" Content="Перенести данные в бланк"
+                        Background="{DynamicResource InputBackground}" Foreground="{DynamicResource AccentColor}"
+                        FontSize="13" Cursor="Hand" Padding="20,10"
+                        BorderBrush="{DynamicResource AccentColor}" BorderThickness="1"
+                        HorizontalAlignment="Center" Margin="0,0,0,10"
+                        Click="TransferToExcel_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="1" CornerRadius="8"
+                                    Padding="{TemplateBinding Padding}" x:Name="border">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="{DynamicResource ButtonHover}"/>
+                                    <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource AccentHover}"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="{DynamicResource ButtonPressed}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </ScrollViewer>
+
+        <Border x:Name="ConfirmClearOverlay" Background="{DynamicResource OverlayBackground}"
+                Visibility="Collapsed" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Border Background="{DynamicResource DialogBackground}" BorderBrush="{DynamicResource WarningBorder}" BorderThickness="1"
+                    CornerRadius="16" Padding="30,24"
+                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                    MinWidth="380" MaxWidth="420">
+                <StackPanel>
+                    <TextBlock Text="Очистка полей" FontSize="18" FontWeight="Bold"
+                               Foreground="{DynamicResource WarningColor}" Margin="0,0,0,8"/>
+                    <TextBlock Text="Все заполненные поля будут очищены."
+                               FontSize="13" Foreground="{DynamicResource TextSecondary}" Margin="0,0,0,4"/>
+                    <TextBlock Text="Инспектор, номер акта, дата выписки сохранён."
+                               FontSize="12" Foreground="{DynamicResource TextTertiary}" Margin="0,0,0,20"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Content="Отмена" Width="90"
+                                Background="{DynamicResource ButtonBackground}" Foreground="{DynamicResource TextSecondary}"
+                                BorderBrush="{DynamicResource ButtonBorder}" BorderThickness="1"
+                                Padding="10,6" Cursor="Hand" FontSize="12"
+                                Click="CancelClear_Click" Margin="0,0,10,0">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="1" CornerRadius="6"
+                                            Padding="{TemplateBinding Padding}" x:Name="border">
+                                        <ContentPresenter/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="{DynamicResource ButtonHover}"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Content="Очистить" Width="90"
+                                Background="{DynamicResource WarningButtonBackground}" Foreground="{DynamicResource WarningColor}"
+                                BorderBrush="{DynamicResource WarningBorder}" BorderThickness="1"
+                                Padding="10,6" Cursor="Hand" FontSize="12" FontWeight="SemiBold"
+                                Click="ConfirmClear_Click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="1" CornerRadius="6"
+                                            Padding="{TemplateBinding Padding}" x:Name="border">
+                                        <ContentPresenter/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="{DynamicResource WarningButtonHover}"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Border>
+    </Grid>
+</UserControl>
